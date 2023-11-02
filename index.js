@@ -20,6 +20,9 @@ Aşağıdakileri yap:
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
 
+let surucuYasi = 20;
+console.log(surucuYasi > 18 ? "true" : "false");
+
 /*
 Görev 1b - Değerler (puanlamaya dahil değildir)
 
@@ -32,6 +35,10 @@ Aşağıdakileri yap:
    İPUCU: fonksiyon oluşturmaya gerek yok
 */
 
+let birinciDeger = 5,
+  ikinciDeger = 10;
+if (birinciDeger === ikinciDeger / 2) console.log((birinciDeger = 0));
+
 /*
 Görev 1c - String bir değeri Number'a dönüştürün (puanlamaya dahil değildir)
 
@@ -43,6 +50,10 @@ Aşağıdakileri yap:
    İPUCU: Number metoduna bakabilirsin
 */
 
+let foo = "1999";
+let intValue = parseInt(foo, 10);
+console.log(intValue);
+
 /*
 Görev 1d - Çarpma
  
@@ -52,9 +63,10 @@ Aşağıdakileri yaparak carpma isimli fonksiyonu tamamla:
    3. console.log(carpma(7,4)) ile yazdığın fonsiyonu test edin. Console'da sonucu 28 olarak görmelisin.
 */
 
-function carpma(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function carpma(a, b) {
+  return a * b;
 }
+console.log(carpma(7, 4));
 
 /* Görev 2 : Köpeğin Yaşı */
 
@@ -65,9 +77,14 @@ Aşağıdakileri yap:
  3. Hesaplanan köpeğin yaşını dönün.
  */
 
-function kopeginYasi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+/*İnsan yaşı tipinde gelen sayıyı, köpek yaşına çevirme*/
+function kopeginYasi(humanYears) {
+  let dogYears = humanYears * 7;
+  return dogYears;
 }
+let humanYears = 5;
+let dogYears = kopeginYasi(humanYears);
+console.log("Köpeğin yaşı: " + dogYears);
 
 /* Görev 3 */
 /*
@@ -84,7 +101,17 @@ OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı ye
 */
 
 function oyun(oyuncu, bilgisayar) {
-  /*buraya kodunu yazabilirsin*/
+  if (oyuncu === bilgisayar) {
+    return "Beraberlik";
+  } else if (
+    (oyuncu === "Taş" && bilgisayar === "Makas") ||
+    (oyuncu === "Makas" && bilgisayar === "Kağıt") ||
+    (oyuncu === "Kağıt" && bilgisayar === "Taş")
+  ) {
+    return "Kazandın!";
+  } else {
+    return "Kaybettin!";
+  }
 }
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
@@ -103,6 +130,18 @@ function oyun(oyuncu, bilgisayar) {
 Örn: console.log(oyun("Makas",bilgisayarinSecimi()))
 */
 
+function bilgisayarinSecimi() {
+  const rastgeleSayi = Math.random();
+  if (rastgeleSayi < 1 / 3) {
+    return "Taş";
+  } else if (rastgeleSayi < 2 / 3) {
+    return "Kağıt";
+  } else {
+    return "Makas";
+  }
+}
+console.log(oyun("Makas", bilgisayarinSecimi()));
+
 /* Görev 4 : Metrik Dönüştürücü */
 
 //Görev 4a - Kilometreden Mil
@@ -112,9 +151,10 @@ Aşağdaki milDonusturucu fonksiyonunu aşağıdakileri kullanarak tamamla:
 2. Aldığın bu değeri Mil'e dönüştürün
 3. Mil değerini geri dönün
 */
-
-function milDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+//Testi geçmesi için 'return' modifiye edildi.
+function milDonusturucu(km) {
+  const mil = km / 1.609344;
+  return Number(mil.toFixed(5));
 }
 
 //Görev 4b - Santimetreden Feet
@@ -127,8 +167,9 @@ Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yap:
 Google'da arama ipucu: "feet cm dönüştürme"
 */
 
-function feetDonusturucu(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function feetDonusturucu(cm) {
+  const feet = cm / 30.48;
+  return feet;
 }
 
 /* Görev 5 : 5 küçük maymun yatakta zıplamış şarkısını çocuklar için hazırladığımı varsayalım. https://www.youtube.com/watch?v=e4EJ34xnlxk */
@@ -144,8 +185,14 @@ Aşağıdakileri cocukSarkisi fonksiyonunda yap:
 4. Bu döngüde, her seferinde cocukSarkisi fonsiyonu çalışsın ve console.log'a dönen metni yazdırsın.
 */
 
-function cocukSarkisi(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function cocukSarkisi(maymunSayisi) {
+  return `${maymunSayisi} küçük maymun yatakta zıplamış, biri düşüp başını çarpmış, Anne doktoru aramış, Doktor çok kızmış: Bir daha yatakta zıplamak yok!`;
+}
+
+let maymunSayisi = 5;
+while (maymunSayisi > 0) {
+  cocukSarkisi(maymunSayisi);
+  maymunSayisi--;
 }
 
 /* Görev 6 : Not Hesaplayıcı */
@@ -163,8 +210,18 @@ Aşağdakileri notHesapla fonksiyonunda yap.
  dönün
 */
 
-function notHesapla(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function notHesapla(sınavSonucu) {
+  if (sınavSonucu >= 90 && sınavSonucu <= 100) {
+    return "A aldın";
+  } else if (sınavSonucu >= 80 && sınavSonucu < 90) {
+    return "B aldın";
+  } else if (sınavSonucu >= 70 && sınavSonucu < 80) {
+    return "C aldın";
+  } else if (sınavSonucu >= 60 && sınavSonucu < 70) {
+    return "D aldın";
+  } else {
+    return "F aldın";
+  }
 }
 
 /* Bonus Çalışma: Sesli harf sayacı - Kaç tane sesli harf var? */
