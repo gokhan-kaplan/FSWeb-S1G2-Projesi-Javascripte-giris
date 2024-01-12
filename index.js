@@ -235,9 +235,34 @@ Aşağıdakileri sesliHarfSayaci fonskiyonunda yap.
 İPUCU - .includes() methoduna bakabilirsin. (https://www.w3schools.com/jsref/jsref_includes.asp)
 */
 
-function sesliHarfSayaci(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function sesliHarfSayaci(kelime) {
+  let sayac = 0;
+  const sesli_harf = [
+    "a",
+    "e",
+    "ı",
+    "i",
+    "o",
+    "ö",
+    "u",
+    "ü",
+    "A",
+    "E",
+    "I",
+    "İ",
+    "O",
+    "Ö",
+    "U",
+    "Ü",
+  ];
+  for (let harf of kelime) {
+    if (sesli_harf.includes(harf)) {
+      sayac++;
+    }
+  }
+  return console.log("Sesli harf sayısı: " + sayac);
 }
+sesliHarfSayaci("Gökhan Kaplan");
 
 /* Lütfen bu satırın alt tarafını değiştirmeyin */
 function sa() {
